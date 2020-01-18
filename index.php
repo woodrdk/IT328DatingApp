@@ -1,6 +1,10 @@
 <?php
-
-// THIS IS OUR CONTROLLER
+/*
+* Rob Wood
+* 1/18/2020
+* This is a dating app website for class IT328
+* This file routes the users at the index to the home page using FatFree Framework
+*/
 
 // Turn on error reporting
 ini_set('display_errors', 1);
