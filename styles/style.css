@@ -6,21 +6,6 @@
 * This file styles the html that is not styled by bootstrap using CSS
 */
 
-.quotes {
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    padding-top: 15px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    font-style: italic;
-}
-
-#container{
-    margin-top: 25px;
-    border: 2px solid red;
-    padding: 25px;
-}
-
 .button{
     background-color: red;
     border: none;
@@ -39,6 +24,21 @@
     background-color: black;
 }
 
+#container{
+    margin-top: 25px;
+    border: 2px solid red;
+    padding: 25px;
+}
+
 .image{
     border-radius: 15px;
+}
+
+.quotes {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding-top: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-style: italic;
 }
