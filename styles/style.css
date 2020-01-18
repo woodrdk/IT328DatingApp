@@ -1,4 +1,10 @@
 
+/*
+* Rob Wood
+* 1/18/2020
+* This is a dating app website for class IT328
+* This file styles the html that is not styled by bootstrap using CSS
+*/
 
 .quotes {
     border-top: 2px solid black;
@@ -14,7 +20,6 @@
     border: 2px solid red;
     padding: 25px;
 }
-
 
 .button{
     background-color: red;
@@ -32,7 +37,6 @@
 .button:hover {
     color: white;
     background-color: black;
-
 }
 
 .image{
