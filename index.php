@@ -40,9 +40,13 @@ $f3 -> route('POST /profile', function(){
     $view = new Template();
     echo $view->render('views/profile.html');
 });
+
 $f3 -> route('POST /interests', function(){
     // var_dump($_POST);
-    $_SESSION['  '] = $_POST[' '];
+    $_SESSION['email'] = $_POST['email'];
+    $_SESSION['seeking'] = $_POST['seeking'];
+    $_SESSION['bio'] = $_POST['bio'];
+    $_SESSION['state'] = $_POST['state'];
     $view = new Template();
     echo $view->render('views/inter.html');
 });
