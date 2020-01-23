@@ -26,21 +26,29 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#"> </a>
-            </li>
-        </ul>
+
     </div>
 </nav>
 <div class="container" id="container">
     <div class="row">
         <div class="col-md-6">
-
+            <ul class="list-unstyled">
+                <li>Name  {{ @SESSION.name }}</li>
+                <li>Gender  {{ @SESSION.gender }}</li>
+                <li>Age  {{ @SESSION.age }}</li>
+                <li>Phone  {{ @SESSION.phone }}</li>
+                <li>Email  {{ @SESSION.email }}</li>
+                <li>State  {{ @SESSION.state }}</li>
+                <li>Seeking  {{ @SESSION.seeking }}</li>
+                <li>Interests  {{ @SESSION.interests }}</li>
+            </ul>
         </div>
         <div class="col-md-6 float-right d-flex flex-wrap align-items-center">
             <div>
-                pers
+
+                    <li>pic</li>
+                    <li>bio</li>
+
             </div>
         </div>
     </div>

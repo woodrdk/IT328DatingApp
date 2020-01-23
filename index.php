@@ -24,16 +24,35 @@ $f3 -> route('GET /', function(){
     echo $view->render('views/home.html');
     //echo'<h1>Hello World!</h1>';
 });
-
-$f3 -> route('GET /order', function(){
+// personal info, profile, interests,  profile summary
+$f3 -> route('GET /personal', function(){
     $view = new Template();
-    echo $view->render('views/form1.html');
+    echo $view->render('views/pers.html');
 });
-$f3 -> route('POST /order2', function(){
+$f3 -> route('POST /profile', function(){
     // var_dump($_POST);
-    $_SESSION['food'] = $_POST['food'];
+    $name = $_POST['first_name']." ".$_POST['last_name'];
+    $_SESSION['name'] = $name;
+    $_SESSION['gender'] = $_POST['gender'];
+    $_SESSION['phone'] = $_POST['phone'];
+    $_SESSION['age'] = $_POST['age'];
+
     $view = new Template();
-    echo $view->render('views/form2.html');
+    echo $view->render('views/profile.html');
 });
+$f3 -> route('POST /interests', function(){
+    // var_dump($_POST);
+    $_SESSION['  '] = $_POST[' '];
+    $view = new Template();
+    echo $view->render('views/inter.html');
+});
+
+$f3 -> route('POST /summary', function(){
+    // var_dump($_POST);
+    $_SESSION['  '] = $_POST[' '];
+    $view = new Template();
+    echo $view->render('views/summ.html');
+});
+
 // Run Fat Free
 $f3 -> run();
