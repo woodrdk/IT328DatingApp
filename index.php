@@ -25,6 +25,10 @@ $f3 -> route('GET /', function(){
     //echo'<h1>Hello World!</h1>';
 });
 // personal info, profile, interests,  profile summary
+$f3 -> route('GET /home', function(){
+    $view = new Template();
+    echo $view->render('views/home.html');
+});
 $f3 -> route('GET /personal', function(){
     $view = new Template();
     echo $view->render('views/pers.html');
@@ -43,6 +47,7 @@ $f3 -> route('POST /profile', function(){
 
 $f3 -> route('POST /interests', function(){
     // var_dump($_POST);
+     var_dump($_SESSION);
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['seeking'] = $_POST['seeking'];
     $_SESSION['bio'] = $_POST['bio'];
