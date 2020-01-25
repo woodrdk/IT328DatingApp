@@ -47,7 +47,7 @@ $f3 -> route('POST /profile', function(){
 
 $f3 -> route('POST /interests', function(){
     // var_dump($_POST);
-     var_dump($_SESSION);
+  //   var_dump($_SESSION);
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['seeking'] = $_POST['seeking'];
     $_SESSION['bio'] = $_POST['bio'];
@@ -58,10 +58,18 @@ $f3 -> route('POST /interests', function(){
 
 $f3 -> route('POST /summary', function(){
     // var_dump($_POST);
-    $_SESSION['  '] = $_POST[' '];
+    $_SESSION['interests'][] = $_POST['interests'];
+    foreach ($_SESSION['interests'] as $result){
+        $_SESSION["result"] += " ".$result;
+    }
     $view = new Template();
     echo $view->render('views/summ.html');
 });
 
+
+$f3 -> route('GET /privacy', function(){
+    $view = new Template();
+    echo $view->render('views/privacy.html');
+});
 // Run Fat Free
 $f3 -> run();

@@ -20,7 +20,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: red;">
-    <a class="navbar-brand font-weight-bold" href="#">Date By Food</a>
+    <a class="navbar-brand font-weight-bold" href="home">Date By Food</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,90 +34,82 @@
     </div>
 </nav>
 <div class="container" id="container">
-    <div class="row">
-        <div class="col-md-6">
+    <form method = "post" action ="summary">
+         <div class="row">
             <div class="row">
-                <form method = "post" action ="summary">
-                    <div>
-                        <input type="checkbox" id="scales" name="interests[]"
-                               checked>
-                        <label for="scales">tv</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="horns" name="interests[]">
-                        <label for="horns">puzzles</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="scales" name="interests[]"
-                               checked>
-                        <label for="scales">moves</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="horns" name="interests[]">
-                        <label for="horns">reading</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="scales" name="interests[]"
-                               checked>
-                        <label for="scales">cooking</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="horns" name="interests[]">
-                        <label for="horns">playing cards</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="scales" name="interests[]"
-                               checked>
-                        <label for="scales">board games</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="horns" name="interests[]">
-                        <label for="horns">video games</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="scales" name="interests[]"
-                               checked>
-                        <label for="scales">Scales</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="horns" name="interests[]">
-                        <label for="horns">Horns</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="scales" name="interests[]"
-                               checked>
-                        <label for="scales">Scales</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="horns" name="interests[]">
-                        <label for="horns">Horns</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="scales" name="interests[]"
-                               checked>
-                        <label for="scales">Scales</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="horns" name="interests[]">
-                        <label for="horns">Horns</label>
-                    </div>
-                    <input type="submit" value="Next >>">
-                </form>
+                <p>In-door interests</p>
             </div>
-        </div>
-        <div class="col-md-6 float-right d-flex flex-wrap align-items-center">
-            <div>
-                pers
+            <div class="row">
+                <div>
+                    <input type="checkbox" id="tv" value="tv" name="interests[]">
+                    <label for="tv">tv</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="puzzles" value="puzzles" name="interests[]">
+                    <label for="puzzles">puzzles</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="movies" value="movies" name="interests[]">
+                    <label for="movies">movies</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="reading" value="reading" name="interests[]">
+                    <label for="reading">reading</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="cooking" value="cooking" name="interests[]">
+                    <label for="cooking">cooking</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="cards" value="playing cards" name="interests[]">
+                    <label for="cards">playing cards</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="board" value="board games" name="interests[]">
+                    <label for="board">board games</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="video" value="video games" name="interests[]">
+                    <label for="video">video games</label>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <p>Out-door Interests</p>
+            </div>
+            <div class="row">
+                <div>
+                    <input type="checkbox" id="hiking" value="hiking" name="interests[]">
+                    <label for="hiking">hiking</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="walking" value="walking" name="interests[]">
+                    <label for="walking">walking</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="biking" value="biking" name="interests[]">
+                    <label for="biking">biking</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="swimming" value="swimming" name="interests[]">
+                    <label for="swimming">swimming</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="climbing" value="climbing" name="interests[]">
+                    <label for="climbing">climbing</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="collecting" value="collecting" name="interests[]">
+                    <label for="collecting">collecting</label>
+                </div>
+                <input type="submit" value="Next >>">
+            </div>
+         </div>
+        </form>
     </div>
 
 <!-- jQuery first, then Popper, then Bootstrap -->
