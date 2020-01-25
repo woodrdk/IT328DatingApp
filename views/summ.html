@@ -17,14 +17,14 @@
                 <li class="">Email:  {{ @SESSION.email }}</li>
                 <li class="">State:  {{ @SESSION.state }}</li>
                 <li class="">Seeking:  {{ @SESSION.seeking }}</li>
-                <li class="">Interests:  {{ @SESSION.interests }}</li>
+                <li class="">Interests:  {{ @SESSION.result }}</li>
             </ul>
         </div>
         <div class="col-md-6 float-right d-flex flex-wrap align-items-center">
             <div>
                 <ul class="list-unstyled">
-                    <li>pic</li>
-                    <li><h2>Biography {{ @SESSION.bio }}</h2></li>
+                    <li><img src="images/prof.JPG"alt="profile pic" class="img-thumbnail rounded"></li>
+                    <li><h2>Biography</h2> <br> {{ @SESSION.bio }}</li>
                 </ul>
             </div>
         </div>

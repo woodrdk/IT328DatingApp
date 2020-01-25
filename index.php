@@ -57,10 +57,22 @@ $f3 -> route('POST /interests', function(){
 });
 
 $f3 -> route('POST /summary', function(){
-    // var_dump($_POST);
-    $_SESSION['interests'][] = $_POST['interests'];
-    foreach ($_SESSION['interests'] as $result){
-        $_SESSION["result"] += " ".$result;
+     // var_dump($_POST);
+    //var_dump($_POST['interests']);
+   // $_SESSION['interests'][] = $_POST['interests'];
+    $_SESSION["result"] = "";
+    $count = 0;
+    if($_POST['interests'] > 0){
+        foreach ($_POST['interests'] as $result){
+            if($count > 0){
+                $_SESSION["result"] .= ", ".$result;
+            }
+            else{
+                $_SESSION["result"] .= " ".$result;
+                $count++;
+            }
+
+        }
     }
     $view = new Template();
     echo $view->render('views/summ.html');
