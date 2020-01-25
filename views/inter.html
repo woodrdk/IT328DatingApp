@@ -6,82 +6,86 @@
 * and set up a profile for the dating app
 -->
 <include href="views/header.html">
-<div class="container" id="container">
+    <div class="container redb" id="container">
+        <div class="row">
+            <h1>Interests</h1>
+        </div>
     <form method = "post" action ="summary">
-         <div class="row">
+
             <div class="row">
-                <p>In-door interests</p>
+                <p class="font-weight-bold">In-door interests</p>
             </div>
             <div class="row">
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="tv" value="tv" name="interests[]">
                     <label for="tv">tv</label>
                 </div>
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="puzzles" value="puzzles" name="interests[]">
                     <label for="puzzles">puzzles</label>
                 </div>
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="movies" value="movies" name="interests[]">
                     <label for="movies">movies</label>
                 </div>
 
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="reading" value="reading" name="interests[]">
                     <label for="reading">reading</label>
                 </div>
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="cooking" value="cooking" name="interests[]">
                     <label for="cooking">cooking</label>
                 </div>
 
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="cards" value="playing cards" name="interests[]">
                     <label for="cards">playing cards</label>
                 </div>
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="board" value="board games" name="interests[]">
                     <label for="board">board games</label>
                 </div>
 
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="video" value="video games" name="interests[]">
                     <label for="video">video games</label>
                 </div>
             </div>
             <div class="row">
-                <p>Out-door Interests</p>
+                <p class="font-weight-bold">Out-door Interests</p>
             </div>
             <div class="row">
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="hiking" value="hiking" name="interests[]">
                     <label for="hiking">hiking</label>
                 </div>
 
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="walking" value="walking" name="interests[]">
                     <label for="walking">walking</label>
                 </div>
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="biking" value="biking" name="interests[]">
                     <label for="biking">biking</label>
                 </div>
 
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="swimming" value="swimming" name="interests[]">
                     <label for="swimming">swimming</label>
                 </div>
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="climbing" value="climbing" name="interests[]">
                     <label for="climbing">climbing</label>
                 </div>
-                <div>
+                <div class="col-3">
                     <input type="checkbox" id="collecting" value="collecting" name="interests[]">
                     <label for="collecting">collecting</label>
                 </div>
-                <input type="submit" value="Next >>">
+
+                <input type="submit" class="button" value="Next >>">
             </div>
-         </div>
+
         </form>
     </div>
 

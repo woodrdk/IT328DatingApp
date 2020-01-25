@@ -7,7 +7,7 @@
 -->
 
 <include href="views/header.html">
-<div class="container" id="container">
+    <div class="container redb" id="container">
     <div class="row">
         <div class="col-md-8">
             <div class="row">
@@ -15,29 +15,31 @@
             </div>
             <div class="row">
                 <form method = "post" action ="profile">
+
                     <label class="font-weight-bold">First Name<br>
-                        <input type="text" name="first_name" value=" " class="input-xlarge">
+                        <input type="text" name="first_name" value=" " class="rounded">
                     </label><br>
+
                     <label class="font-weight-bold">Last Name<br>
-                        <input type="text" name="last_name" value=" " class="col-lg-8">
+                        <input type="text" name="last_name" value=" "  class="rounded">
                     </label><br>
                     <label class="font-weight-bold">Age<br>
-                        <input type="text" name="age" value=" " class="col-lg-8">
+                        <input type="text" name="age" value=" " class="rounded">
                     </label><br>
                     <label><span class="font-weight-bold">Gender</span><br>
                         <input type="radio" name="gender" value="Male">Male &nbsp;
                         <input type="radio" name="gender" value="Female">Female<br>
                     </label><br>
                     <label class="font-weight-bold">Phone Number<br>
-                        <input type="text" name="phone" value=" " placeholder="253-312-0134" class="col-lg-8">
+                        <input type="text" name="phone" value=" " placeholder="253-312-0134"  class="rounded">
                     </label><br>
-                    <input type="submit" value="Next >">
+                    <input type="submit" class="button float-right" value="Next >">
                 </form>
 
             </div>
         </div>
-        <div class="col-md-2 float-right d-flex flex-wrap align-items-center">
-            <div>
+        <div class="col-md-4 float-right d-flex flex-wrap align-items-center ">
+            <div class="redb">
                 <span class="font-weight-bold">Note:</span> All information entered is protected by our
                 <a href="privacy">privacy policy.</a>
                 Profile information can only be viewed by others with your permission.
