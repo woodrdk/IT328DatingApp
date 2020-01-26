@@ -9,16 +9,40 @@
     <div class="container redb" id="container">
     <div class="row">
         <div class="col-md-6">
-            <ul class="list-unstyled redbSumm">
-                <li class="">Name:  {{ @SESSION.name }}</li>
-                <li class="">Gender:  {{ @SESSION.gender }}</li>
-                <li class="">Age:  {{ @SESSION.age }}</li>
-                <li class="">Phone:  {{ @SESSION.phone }}</li>
-                <li class="">Email:  {{ @SESSION.email }}</li>
-                <li class="">State:  {{ @SESSION.state }}</li>
-                <li class="">Seeking:  {{ @SESSION.seeking }}</li>
-                <li class="">Interests:  {{ @SESSION.result }}</li>
-            </ul>
+            <table class="redbSumm">
+                <tr class="redList">
+                    <td>Name:</td>
+                    <td>{{ @SESSION.name }}</td>
+                </tr>
+                <tr class="redList">
+                    <td>Gender:</td>
+                    <td>{{ @SESSION.gender }}</td>
+                </tr>
+                <tr class="redList">
+                    <td>Age:</td>
+                    <td>{{ @SESSION.age }}</td>
+                </tr>
+                <tr class="redList">
+                    <td>Phone:</td>
+                    <td>{{ @SESSION.phone }}</td>
+                </tr>
+                <tr class="redList">
+                    <td>Email:</td>
+                    <td>{{ @SESSION.email }}</td>
+                </tr>
+                <tr class="redList">
+                    <td>State:</td>
+                    <td>{{ @SESSION.state }}</td>
+                </tr>
+                <tr class="redList">
+                    <td>Seeking:</td>
+                    <td>{{ @SESSION.seeking }}</td>
+                </tr>
+                <tr class="redList">
+                    <td>Interests:</td>
+                    <td> {{ @SESSION.result }}</td>
+                </tr>
+            </table>
         </div>
         <div class="col-md-6 float-right d-flex flex-wrap align-items-center">
             <div>

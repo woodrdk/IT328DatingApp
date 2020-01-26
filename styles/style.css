@@ -37,9 +37,19 @@
 }
 
 .redbSumm{
+    padding: 25px;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+    border-left: 2px solid red;
+    border-right: 2px solid red;
+}
+td{
     padding: 15px;
-    border: 2px solid red;
-
+}
+.redList{
+    border-bottom: 1px solid red;
+    border-top: 1px solid red;
+    padding: 15px;
 }
 
 .image{
