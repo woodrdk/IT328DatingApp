@@ -2,8 +2,7 @@
 * Rob Wood
 * 1/18/2020
 * This is a dating app website for class IT328
-* This file is the home view page which allows you to see the entrance to the website
-* and set up a profile for the dating app
+* This file is the view page which allows you to see your data entry summary that was entered into the app.
 -->
 <include href="views/header.html">
     <div class="container redb rounded" id="container">
@@ -47,7 +46,7 @@
         <div class="col-md-6 float-right d-flex flex-wrap align-items-center">
             <div>
                 <ul class="list-unstyled">
-                    <li><img src="images/prof.JPG"alt="profile pic" class="img-thumbnail rounded"></li>
+                    <li><img src="images/prof.JPG" alt="profile pic" class="img-thumbnail rounded"></li>
                     <li><h2>Biography</h2> <br> {{ @SESSION.bio }}</li>
                 </ul>
             </div>
