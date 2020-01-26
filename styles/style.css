@@ -24,10 +24,22 @@
     background-color: black;
 }
 
-#container{
+.redb{
     margin-top: 25px;
     border: 2px solid red;
     padding: 25px;
+}
+
+.redbPriv{
+    margin-top: 75px;
+    border: 2px solid red;
+    padding: 15px;
+}
+
+.redbSumm{
+    padding: 15px;
+    border: 2px solid red;
+
 }
 
 .image{
@@ -42,3 +54,10 @@
     margin-bottom: 25px;
     font-style: italic;
 }
+
+.wide {
+    width: 100%;
+}
+
+
+

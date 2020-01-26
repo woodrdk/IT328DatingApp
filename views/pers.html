@@ -10,42 +10,55 @@
     <div class="container redb" id="container">
     <div class="row">
         <div class="col-md-8">
-            <div class="row">
+            <!--<div class="row">-->
                 <h2>Personal Information</h2>
-            </div>
-            <div class="row">
+            <!--</div>
+         <div class="row">-->
                 <form method = "post" action ="profile">
 
-                    <label class="font-weight-bold">First Name<br>
-                        <input type="text" name="first_name" value=" " class="rounded">
-                    </label><br>
+                    <div class="form-group">
+                        <label for="first_name" class="font-weight-bold">First Name</label><br>
+                        <input type="text" name="first_name" id="first_name" class="form-control rounded">
+                    </div>
 
-                    <label class="font-weight-bold">Last Name<br>
-                        <input type="text" name="last_name" value=" "  class="rounded">
-                    </label><br>
-                    <label class="font-weight-bold">Age<br>
-                        <input type="text" name="age" value=" " class="rounded">
-                    </label><br>
+                    <div class="form-group">
+                    <label for="last_name" class="font-weight-bold">Last Name</label><br>
+                        <input type="text" name="last_name" id="last_name" class="form-control rounded">
+                    </div>
+
+                    <div class="form-group">
+                    <label for="age" class="font-weight-bold">Age</label><br>
+                        <input type="text" name="age" id="age" class="form-control rounded">
+                    </div>
+
+                    <div class="form-group">
                     <label><span class="font-weight-bold">Gender</span><br>
                         <input type="radio" name="gender" value="Male">Male &nbsp;
                         <input type="radio" name="gender" value="Female">Female<br>
                     </label><br>
-                    <label class="font-weight-bold">Phone Number<br>
-                        <input type="text" name="phone" value=" " placeholder="253-312-0134"  class="rounded">
-                    </label><br>
-                    <input type="submit" class="button float-right" value="Next >">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="font-weight-bold">Phone Number</label><br>
+                        <input type="text" name="phone" id="phone" placeholder="253-312-0134"  class="form-control rounded">
+                    </div>
+                    <div class="col text-center">
+                        <input type="submit" class="button float-right " value="Next >">
+                    </div>
                 </form>
 
-            </div>
-        </div>
-        <div class="col-md-4 float-right d-flex flex-wrap align-items-center ">
-            <div class="redb">
-                <span class="font-weight-bold">Note:</span> All information entered is protected by our
-                <a href="privacy">privacy policy.</a>
-                Profile information can only be viewed by others with your permission.
-            </div>
-        </div>
-    </div>
+            <!-- </div>-->
+      </div>
+      <div class="col-md-4 float-right text-center ">
+
+          <div class="redbPriv">
+              <span class="font-weight-bold">Note:</span>
+              All information entered is protected by our
+              <a href="privacy">privacy policy.</a>
+              Profile information can only be viewed by others with your permission.
+          </div>
+      </div>
+  </div>
 </div>
 
 <!-- jQuery first, then Popper, then Bootstrap -->
