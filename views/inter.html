@@ -6,14 +6,14 @@
 * and set up a profile for the dating app
 -->
 <include href="views/header.html">
-    <div class="container redb" id="container">
-        <div class="row">
-            <h1>Interests</h1>
-        </div>
-    <form method = "post" action ="summary">
-
+    <div class="container redb rounded" id="container">
+        <h1>Interests</h1>
+        <hr>
+        <form method = "post" action ="summary">
             <div class="row">
-                <p class="font-weight-bold">In-door interests</p>
+                <div class="col">
+                    <p class="font-weight-bold">In-door interests</p>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
@@ -53,8 +53,12 @@
                 </div>
             </div>
             <div class="row">
-                <p class="font-weight-bold">Out-door Interests</p>
+                <div class="col">
+                    <p class="font-weight-bold">Out-door Interests</p>
+                </div>
             </div>
+
+
             <div class="row">
                 <div class="col-md-3">
                     <input type="checkbox" id="hiking" value="hiking" name="interests[]">
@@ -84,22 +88,20 @@
                 </div>
 
             </div>
-        <div class="row">
-            <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-3">
 
+                </div>
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-3">
+                    <input type="submit" class="button" value="Next >">
+                </div>
             </div>
-            <div class="col-md-3">
-
-            </div>
-            <div class="col-md-3">
-
-            </div>
-            <div class="col-md-3">
-                <input type="submit" class="button" value="Next >">
-            </div>
-
-        </div>
-
         </form>
     </div>
 

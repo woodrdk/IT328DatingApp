@@ -24,34 +24,6 @@
     background-color: black;
 }
 
-.redb{
-    margin-top: 25px;
-    border: 2px solid red;
-    padding: 25px;
-}
-
-.redbPriv{
-    margin-top: 75px;
-    border: 2px solid red;
-    padding: 15px;
-}
-
-.redbSumm{
-    padding: 25px;
-    border-top: 1px solid red;
-    border-bottom: 1px solid red;
-    border-left: 2px solid red;
-    border-right: 2px solid red;
-}
-td{
-    padding: 15px;
-}
-.redList{
-    border-bottom: 1px solid red;
-    border-top: 1px solid red;
-    padding: 15px;
-}
-
 .image{
     border-radius: 15px;
 }
@@ -65,8 +37,35 @@ td{
     font-style: italic;
 }
 
-.wide {
-    width: 100%;
+.redb{
+    margin-top: 25px;
+    border: 2px solid red;
+    padding: 50px;
+}
+
+.redbPriv{
+    margin-top: 35px;
+    margin-bottom: 150px;
+    border: 2px solid red;
+    padding: 15px;
+}
+
+.redbSumm{
+    padding: 25px;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+    border-left: 2px solid red;
+    border-right: 2px solid red;
+}
+
+.redList{
+    border-bottom: 1px solid red;
+    border-top: 1px solid red;
+    padding: 15px;
+}
+
+td{
+    padding: 15px;
 }
 
 
