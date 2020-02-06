@@ -14,7 +14,7 @@ error_reporting(E_ALL);
 
 // require the autoload file
 require_once ('vendor/autoload.php');
-
+require ('model/validation-functions.php');
 // Create an instance of the base class
 $f3 = Base::instance();
 
@@ -71,7 +71,6 @@ $f3 -> route('POST /summary', function(){
                 $_SESSION["result"] .= " ".$result;
                 $count++;
             }
-
         }
     }
     $view = new Template();
