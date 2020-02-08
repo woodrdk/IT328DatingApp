@@ -17,6 +17,8 @@ require_once ('vendor/autoload.php');
 require ('model/validation-functions.php');
 // Create an instance of the base class
 $f3 = Base::instance();
+//Turn on Fat-Free error reporting
+$f3->set('DEBUG', 3);
 
 // define a default route
 $f3 -> route('GET /', function(){
@@ -29,17 +31,34 @@ $f3 -> route('GET /home', function(){
     $view = new Template();
     echo $view->render('views/home.html');
 });
-$f3 -> route('GET /personal', function(){
+$f3 -> route('GET|POST /personal', function($f3){
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $first = $_POST['first_name'];
+        $last =  $_POST['last_name'];
+        $age =  $_POST['age'];
+        $gender = $_POST['gender'];
+        $phone = $_POST['phone'];
+    }
+    $name = $first." ".$last;
+    $f3->set('name', $name);
+    $f3->set('gender', $gender);
+    $f3->set('phone', $phone);
+    $f3->set('age', $age);
+
+    if(validForm()){
+        $_SESSION['name'] = $name;
+        $_SESSION['gender'] = $_POST['gender'];
+        $_SESSION['phone'] = $_POST['phone'];
+        $_SESSION['age'] = $_POST['age'];
+        $f3->reroute('/profile');
+    }
     $view = new Template();
     echo $view->render('views/pers.html');
 });
-$f3 -> route('POST /profile', function(){
+$f3 -> route('GET|POST /profile', function(){
     // var_dump($_POST);
-    $name = $_POST['first_name']." ".$_POST['last_name'];
-    $_SESSION['name'] = $name;
-    $_SESSION['gender'] = $_POST['gender'];
-    $_SESSION['phone'] = $_POST['phone'];
-    $_SESSION['age'] = $_POST['age'];
+
+
 
     $view = new Template();
     echo $view->render('views/profile.html');
