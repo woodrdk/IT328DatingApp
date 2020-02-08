@@ -64,7 +64,7 @@ $f3 -> route('GET|POST /profile', function(){
     echo $view->render('views/profile.html');
 });
 
-$f3 -> route('POST /interests', function(){
+$f3 -> route('GET|POST /interests', function(){
     // var_dump($_POST);
   //   var_dump($_SESSION);
     $_SESSION['email'] = $_POST['email'];
@@ -75,7 +75,7 @@ $f3 -> route('POST /interests', function(){
     echo $view->render('views/inter.html');
 });
 
-$f3 -> route('POST /summary', function(){
+$f3 -> route('GET|POST /summary', function(){
      // var_dump($_POST);
     //var_dump($_POST['interests']);
    // $_SESSION['interests'][] = $_POST['interests'];
