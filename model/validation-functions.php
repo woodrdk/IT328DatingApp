@@ -18,10 +18,10 @@ function validForm()
         $f3->set("errors['phone']", "Please enter a valid phone number.");
     }
 
-    if (!validEmail($f3->get('email'))) {
+    /*if (!validEmail($f3->get('email'))) {
         $isValid = false;
         $f3->set("errors['email']", "Please enter a valid email address");
-    }
+    }*/
     return $isValid;
 }
 
@@ -40,7 +40,7 @@ function validAge($age) {
 
 // req
 function validPhone($phone) {
-
+    return true;
 }
 
 // req
