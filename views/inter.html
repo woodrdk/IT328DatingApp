@@ -14,10 +14,11 @@
             <div class="row">
                 <div class="col">
                     <p class="font-weight-bold">In-door interests</p>
+                    <check if="{{ @errors['indoorI'] }}">
+                        <span class="err">{{ @errors['indoorI'] }}</span>
+                    </check><br>
                 </div>
-                <check if="{{ @errors['indoorI'] }}">
-                    <span class="err">{{ @errors['indoorI'] }}</span>
-                </check><br>
+
             </div>
             <div class="row">
                 <repeat group="{{ @indoor }}" value="{{ @indoorOption }}">

@@ -23,6 +23,9 @@
     color: white;
     background-color: black;
 }
+.err {
+    color: red;
+}
 
 .image{
     border-radius: 15px;
