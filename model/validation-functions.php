@@ -3,9 +3,13 @@ function validForm()
 {
     global $f3;
     $isValid = true;
-    if (!validName($f3->get('name'))) {
+    if (!validName($f3->get('first_name'))) {
         $isValid = false;
-        $f3->set("errors['name']", "Please enter a valid name");
+        $f3->set("errors['first_name']", "Please enter a valid name");
+    }
+    if (!validName($f3->get('last_name'))) {
+        $isValid = false;
+        $f3->set("errors['last_name']", "Please enter a valid name");
     }
 
     if (!validAge($f3->get('age'))) {
@@ -32,6 +36,7 @@ function validName($name) {
 }
 // req
 function validAge($age) {
+var_dump($age);
     return !empty($age)
         && ctype_digit($age)
         && $age >= 18

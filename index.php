@@ -20,6 +20,9 @@ $f3 = Base::instance();
 //Turn on Fat-Free error reporting
 $f3->set('DEBUG', 3);
 
+
+// define arrays
+$f3->set('genders', array('Male', 'Female', 'Other'));
 // define a default route
 $f3 -> route('GET /', function(){
     $view = new Template();
@@ -31,29 +34,38 @@ $f3 -> route('GET /home', function(){
     $view = new Template();
     echo $view->render('views/home.html');
 });
+
 $f3 -> route('GET|POST /personal', function($f3){
+
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
+       var_dump($_POST);
         $first = $_POST['first_name'];
         $last =  $_POST['last_name'];
-        $age =  $_POST['age'];
+        $age =  trim($_POST['age']);
+
         $gender = $_POST['gender'];
         $phone = $_POST['phone'];
-    }
-    $name = $first." ".$last;
-    $f3->set('name', $name);
-    $f3->set('gender', $gender);
-    $f3->set('phone', $phone);
-    $f3->set('age', $age);
+//var_dump($age);
+        $name = $first." ".$last;
+        $f3->set('first_name', $first);
+        $f3->set('last_name', $last);
 
-    if(validForm()){
-        $_SESSION['name'] = $name;
-        $_SESSION['gender'] = $_POST['gender'];
-        $_SESSION['phone'] = $_POST['phone'];
-        $_SESSION['age'] = $_POST['age'];
-        $f3->reroute('/profile');
+        //$f3->set('name', $name);
+        $f3->set('gender', $gender);
+        $f3->set('phone', $phone);
+        $f3->set('age', $age);
+
+        if(validForm()){
+            $_SESSION['name'] = $name;
+            $_SESSION['gender'] = $_POST['gender'];
+            $_SESSION['phone'] = $_POST['phone'];
+            $_SESSION['age'] = $_POST['age'];
+            $f3->reroute('/profile');
+        }
     }
     $view = new Template();
     echo $view->render('views/pers.html');
+
 });
 $f3 -> route('GET|POST /profile', function(){
     // var_dump($_POST);
