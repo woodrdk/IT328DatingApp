@@ -9,11 +9,15 @@
     <div class="container redb rounded" id="container">
         <h1>Interests</h1>
         <hr>
+
         <form method = "post" action ="#">
             <div class="row">
                 <div class="col">
                     <p class="font-weight-bold">In-door interests</p>
                 </div>
+                <check if="{{ @errors['indoorI'] }}">
+                    <span class="err">{{ @errors['indoorI'] }}</span>
+                </check><br>
             </div>
             <div class="row">
                 <repeat group="{{ @indoor }}" value="{{ @indoorOption }}">
@@ -32,6 +36,9 @@
             <div class="row">
                 <div class="col">
                     <p class="font-weight-bold">Out-door Interests</p>
+                    <check if="{{ @errors['outdoorI'] }}">
+                        <span class="err">{{ @errors['outdoorI'] }}</span>
+                    </check><br>
                 </div>
             </div>
 

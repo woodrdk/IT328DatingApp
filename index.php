@@ -34,11 +34,11 @@ $f3->set('states', array('Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California
     'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah' , 'Vermont',
     'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'));
 
-$f3->set('indoor', array('tv', 'puzzles', 'movies',
-    'video games', 'board games', 'playing cards', 'cooking', 'reading'));
-
-$f3->set('outdoor', array('collecting', 'climbing', 'swimming',
-    'biking', 'walking', 'hiking'));
+$indoor = array('tv', 'puzzles', 'movies', 'video games', 'board games', 'playing cards', 'cooking', 'reading');
+$f3->set('indoor', $indoor);
+$outdoor = array ('collecting', 'climbing', 'swimming',
+    'biking', 'walking', 'hiking');
+$f3->set('outdoor', $outdoor);
 
 // define a default route
 $f3 -> route('GET /', function(){
@@ -55,7 +55,7 @@ $f3 -> route('GET /home', function(){
 $f3 -> route('GET|POST /personal', function($f3){
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-       var_dump($_POST);
+        //var_dump($_POST);
         $first = $_POST['first_name'];
         $last =  $_POST['last_name'];
         $age =  trim($_POST['age']);
@@ -110,7 +110,8 @@ $f3 -> route('GET|POST /profile', function($f3){
     echo $view->render('views/profile.html');
 });
 
-$f3 -> route('GET|POST /interests', function($f3){
+$f3 -> route('GET|POST /interests', function($f3, $indoor, $outdoor){
+
     $selectedIndoor = array();
     $selectedOutdoor = array();
     //If form has been submitted, validate
@@ -130,7 +131,7 @@ $f3 -> route('GET|POST /interests', function($f3){
         $f3->set('selectedOutdoor', $selectedOutdoor);
 
         //If data is valid
-        if (validInterests($selectedIndoor, $selectedOutdoor)) {
+        if (validInterests($selectedIndoor, $selectedOutdoor )) {
             //Write data to Session
             $_SESSION['inDoor'] = $selectedIndoor;
             $_SESSION['outDoor'] = $selectedOutdoor;

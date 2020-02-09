@@ -39,7 +39,10 @@
                 </tr>
                 <tr class="redList">
                     <td>Interests:</td>
-                    <td>  {{ implode(", ", @SESSION.inDoor) }}  {{ implode(", ", @SESSION.outDoor) }}</td>
+                    <td> Indoor: {{ implode(", ", @SESSION.inDoor) }} <br>
+
+                        Outdoor:
+                              {{ implode(", ", @SESSION.outDoor) }}</td>
                 </tr>
             </table>
         </div>
