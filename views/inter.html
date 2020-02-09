@@ -9,48 +9,25 @@
     <div class="container redb rounded" id="container">
         <h1>Interests</h1>
         <hr>
-        <form method = "post" action ="summary">
+        <form method = "post" action ="#">
             <div class="row">
                 <div class="col">
                     <p class="font-weight-bold">In-door interests</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
-                    <input type="checkbox" id="tv" value="tv" name="interests[]">
-                    <label for="tv">tv</label>
-                </div>
-                <div class="col-md-3">
-                    <input type="checkbox" id="puzzles" value="puzzles" name="interests[]">
-                    <label for="puzzles">puzzles</label>
-                </div>
-                <div class="col-md-3">
-                    <input type="checkbox" id="movies" value="movies" name="interests[]">
-                    <label for="movies">movies</label>
-                </div>
-
-                <div class="col-md-3">
-                    <input type="checkbox" id="reading" value="reading" name="interests[]">
-                    <label for="reading">reading</label>
-                </div>
-                <div class="col-md-3">
-                    <input type="checkbox" id="cooking" value="cooking" name="interests[]">
-                    <label for="cooking">cooking</label>
-                </div>
-
-                <div class="col-md-3">
-                    <input type="checkbox" id="cards" value="playing cards" name="interests[]">
-                    <label for="cards">playing cards</label>
-                </div>
-                <div class="col-md-3">
-                    <input type="checkbox" id="board" value="board games" name="interests[]">
-                    <label for="board">board games</label>
-                </div>
-
-                <div class="col-md-3">
-                    <input type="checkbox" id="video" value="video games" name="interests[]">
-                    <label for="video">video games</label>
-                </div>
+                <repeat group="{{ @indoor }}" value="{{ @indoorOption }}">
+                    <div class="col-md-3">
+                        <label><input type="checkbox"
+                                  name="indoorInterests[]"
+                                  value="{{ @indoorOption }}"
+                        <check if="{{ isset( @selectedIndoor) && in_array(@indoorOption, @selectedIndoor) }}">
+                            checked
+                        </check>
+                        > {{ @indoorOption }}
+                    </label><br>
+                    </div>
+                </repeat>
             </div>
             <div class="row">
                 <div class="col">
@@ -60,34 +37,20 @@
 
 
             <div class="row">
-                <div class="col-md-3">
-                    <input type="checkbox" id="hiking" value="hiking" name="interests[]">
-                    <label for="hiking">hiking</label>
-                </div>
-
-                <div class="col-md-3">
-                    <input type="checkbox" id="walking" value="walking" name="interests[]">
-                    <label for="walking">walking</label>
-                </div>
-                <div class="col-md-3">
-                    <input type="checkbox" id="biking" value="biking" name="interests[]">
-                    <label for="biking">biking</label>
-                </div>
-
-                <div class="col-md-3">
-                    <input type="checkbox" id="swimming" value="swimming" name="interests[]">
-                    <label for="swimming">swimming</label>
-                </div>
-                <div class="col-md-3">
-                    <input type="checkbox" id="climbing" value="climbing" name="interests[]">
-                    <label for="climbing">climbing</label>
-                </div>
-                <div class="col-md-3">
-                    <input type="checkbox" id="collecting" value="collecting" name="interests[]">
-                    <label for="collecting">collecting</label>
-                </div>
-
+                <repeat group="{{ @outdoor }}" value="{{ @outdoorOption }}">
+                    <div class="col-md-3">
+                        <label><input type="checkbox"
+                                      name="outdoorInterests[]"
+                                      value="{{ @outdoorOption }}"
+                            <check if="{{ isset( @selectedOutdoor) && in_array(@outdoorOption, @selectedOutdoor) }}">
+                                checked
+                            </check>
+                            > {{ @outdoorOption }}
+                        </label><br>
+                    </div>
+                </repeat>
             </div>
+
             <div class="row">
                 <div class="col-md-3">
 

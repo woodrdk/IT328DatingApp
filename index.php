@@ -23,6 +23,23 @@ $f3->set('DEBUG', 3);
 
 // define arrays
 $f3->set('genders', array('Male', 'Female', 'Other'));
+$f3->set('states', array('Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+    'Colorado', 'Connecticut','Delaware','District Of Columbia', 'Florida',
+    'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana',
+    'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
+    'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
+    'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+    'New Jersey', 'New Mexico', 'New York' ,'North Carolina', 'North Dakota',
+    'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+    'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah' , 'Vermont',
+    'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'));
+
+$f3->set('indoor', array('tv', 'puzzles ', 'movies ',
+    'video games', 'board games', 'playing cards', 'cooking', 'reading'));
+
+$f3->set('outdoor', array('collecting ', 'climbing ', 'swimming',
+    'biking', 'walking', 'hiking'));
+
 // define a default route
 $f3 -> route('GET /', function(){
     $view = new Template();
@@ -42,15 +59,12 @@ $f3 -> route('GET|POST /personal', function($f3){
         $first = $_POST['first_name'];
         $last =  $_POST['last_name'];
         $age =  trim($_POST['age']);
-
         $gender = $_POST['gender'];
         $phone = $_POST['phone'];
-//var_dump($age);
         $name = $first." ".$last;
+
         $f3->set('first_name', $first);
         $f3->set('last_name', $last);
-
-        //$f3->set('name', $name);
         $f3->set('gender', $gender);
         $f3->set('phone', $phone);
         $f3->set('age', $age);
@@ -67,22 +81,63 @@ $f3 -> route('GET|POST /personal', function($f3){
     echo $view->render('views/pers.html');
 
 });
-$f3 -> route('GET|POST /profile', function(){
-    // var_dump($_POST);
+$f3 -> route('GET|POST /profile', function($f3){
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //Get data from form
+        $email = $_POST['email'];
+        $state = $_POST['state'];
+        $seek = $_POST['seeking'];
+        $bio = $_POST['bio'];
 
+        //Add data to hive
+        $f3->set('email', $email);
+        $f3->set('stateOption', $state);
+        $f3->set('seek', $seek);
+        $f3->set('bio', $bio);
 
+        //If data is valid
+        if (validEmail($email)) {
+            //Write data to Session
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['seeking'] = $_POST['seeking'];
+            $_SESSION['bio'] = $_POST['bio'];
+            $_SESSION['state'] = $_POST['state'];            //Redirect to Summary
+            $f3->reroute('/interests');
+        }
+    }
 
     $view = new Template();
     echo $view->render('views/profile.html');
 });
 
-$f3 -> route('GET|POST /interests', function(){
-    // var_dump($_POST);
-  //   var_dump($_SESSION);
-    $_SESSION['email'] = $_POST['email'];
-    $_SESSION['seeking'] = $_POST['seeking'];
-    $_SESSION['bio'] = $_POST['bio'];
-    $_SESSION['state'] = $_POST['state'];
+$f3 -> route('GET|POST /interests', function($f3){
+    $selectedIndoor = array();
+    $selectedOutdoor = array();
+    //If form has been submitted, validate
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //Get data from form
+
+        if(!empty($_POST['indoorInterests'])){
+            $selectedCondiments = $_POST['indoorInterests'];
+        };
+        if(!empty($_POST['outdoorInterests'])){
+            $selectedCondiments = $_POST['outdoorInterests'];
+        };
+
+
+        //Add data to hive
+        $f3->set('selectedIndoor', $selectedIndoor);
+        $f3->set('selectedOutdoor', $selectedOutdoor);
+
+        //If data is valid
+        if (validInterests($selectedIndoor, $selectedOutdoor)) {
+            //Write data to Session
+            $_SESSION['inDoor'] = $selectedIndoor;
+            $_SESSION['outDoor'] = $selectedOutdoor;
+           //Redirect to Summary
+            $f3->reroute('/summary');
+        }
+    }
     $view = new Template();
     echo $view->render('views/inter.html');
 });

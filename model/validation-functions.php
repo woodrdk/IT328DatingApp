@@ -5,11 +5,11 @@ function validForm()
     $isValid = true;
     if (!validName($f3->get('first_name'))) {
         $isValid = false;
-        $f3->set("errors['first_name']", "Please enter a valid name");
+        $f3->set("errors['first_name']", "Please enter a valid first name");
     }
     if (!validName($f3->get('last_name'))) {
         $isValid = false;
-        $f3->set("errors['last_name']", "Please enter a valid name");
+        $f3->set("errors['last_name']", "Please enter a valid last name");
     }
 
     if (!validAge($f3->get('age'))) {
@@ -22,13 +22,8 @@ function validForm()
         $f3->set("errors['phone']", "Please enter a valid phone number.");
     }
 
-    /*if (!validEmail($f3->get('email'))) {
-        $isValid = false;
-        $f3->set("errors['email']", "Please enter a valid email address");
-    }*/
     return $isValid;
 }
-
 
 // req
 function validName($name) {
@@ -50,17 +45,18 @@ function validPhone($phone) {
 
 // req
 function validEmail($email) {
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo("$email is a valid email address");
-    } else {
-        echo("$email is not a valid email address");
+    global $f3;
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $f3->set("errors['email']", "Please enter a valid email address.");
+    }
+    else{
+        return true;
     }
 }
 
-function validOutdoor($outdoor) {
+function validInterests($selectedIndoor, $selectedOutdoor) {
 
+    global $f3;
+    return true;
 }
 
-function validIndoor($indoor) {
-
-}

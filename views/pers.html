@@ -23,6 +23,9 @@
 
                     <div class="form-group">
                         <label for="last_name" class="font-weight-bold">Last Name</label><br>
+                        <check if="{{ @errors['last_name'] }}">
+                            <span class="err">{{ @errors['last_name'] }}</span>
+                        </check>
                         <input type="text" name="last_name" id="last_name" value="{{ @last_name}}" class="form-control rounded">
                     </div>
 
