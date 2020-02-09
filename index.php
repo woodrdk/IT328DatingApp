@@ -125,7 +125,6 @@ $f3 -> route('GET|POST /interests', function($f3, $indoor, $outdoor){
             $selectedOutdoor = $_POST['outdoorInterests'];
         };
 
-
         //Add data to hive
         $f3->set('selectedIndoor', $selectedIndoor);
         $f3->set('selectedOutdoor', $selectedOutdoor);
