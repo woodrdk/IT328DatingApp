@@ -34,10 +34,10 @@ $f3->set('states', array('Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California
     'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah' , 'Vermont',
     'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'));
 
-$f3->set('indoor', array('tv', 'puzzles ', 'movies ',
+$f3->set('indoor', array('tv', 'puzzles', 'movies',
     'video games', 'board games', 'playing cards', 'cooking', 'reading'));
 
-$f3->set('outdoor', array('collecting ', 'climbing ', 'swimming',
+$f3->set('outdoor', array('collecting', 'climbing', 'swimming',
     'biking', 'walking', 'hiking'));
 
 // define a default route
@@ -118,10 +118,10 @@ $f3 -> route('GET|POST /interests', function($f3){
         //Get data from form
 
         if(!empty($_POST['indoorInterests'])){
-            $selectedCondiments = $_POST['indoorInterests'];
+            $selectedIndoor = $_POST['indoorInterests'];
         };
         if(!empty($_POST['outdoorInterests'])){
-            $selectedCondiments = $_POST['outdoorInterests'];
+            $selectedOutdoor = $_POST['outdoorInterests'];
         };
 
 
@@ -143,26 +143,9 @@ $f3 -> route('GET|POST /interests', function($f3){
 });
 
 $f3 -> route('GET|POST /summary', function(){
-     // var_dump($_POST);
-    //var_dump($_POST['interests']);
-   // $_SESSION['interests'][] = $_POST['interests'];
-    $_SESSION["result"] = "";
-    $count = 0;
-    if($_POST['interests'] > 0){
-        foreach ($_POST['interests'] as $result){
-            if($count > 0){
-                $_SESSION["result"] .= ", ".$result;
-            }
-            else{
-                $_SESSION["result"] .= " ".$result;
-                $count++;
-            }
-        }
-    }
     $view = new Template();
     echo $view->render('views/summ.html');
 });
-
 
 $f3 -> route('GET /privacy', function(){
     $view = new Template();

@@ -39,7 +39,7 @@
                 </tr>
                 <tr class="redList">
                     <td>Interests:</td>
-                    <td> {{ @SESSION.result }}</td>
+                    <td>  {{ implode(", ", @SESSION.inDoor) }}  {{ implode(", ", @SESSION.outDoor) }}</td>
                 </tr>
             </table>
         </div>
