@@ -12,6 +12,7 @@ class PremiumMember extends member
      */
     public function __construct($inDoorInterests, $outDoorInterests)
     {
+        parent::__construct();
         $this->inDoorInterests = $inDoorInterests;
         $this->outDoorInterests = $outDoorInterests;
     }
