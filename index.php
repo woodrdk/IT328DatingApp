@@ -19,7 +19,7 @@ require ('model/validation-functions.php');
 $f3 = Base::instance();
 //Turn on Fat-Free error reporting
 $f3->set('DEBUG', 3);
-
+$controller = new MemberController($f3);
 
 // define arrays
 $f3->set('genders', array('Male', 'Female', 'Other'));
@@ -47,9 +47,8 @@ $f3 -> route('GET /', function(){
     //echo'<h1>Hello World!</h1>';
 });
 // personal info, profile, interests,  profile summary
-$f3 -> route('GET /home', function(){
-    $view = new Template();
-    echo $view->render('views/home.html');
+$f3 -> route('GET /home', function($f3){
+    $GLOBALS['controller']->home();
 });
 
 $f3 -> route('GET|POST /personal', function($f3){
