@@ -35,40 +35,14 @@ class MemberController
             if(validForm()){
                 if(isset($_POST['prem'])){
                     $member = new PremiumMember($first, $last, $age, $gender, $phone);
-                    $_SESSION['member'] = $member;
                 }
                 else{
                     $member = new Member($first, $last, $age, $gender, $phone);
-                    $_SESSION['member'] = $member;
-                    //$this->_f3->set('member',$member);
                 }
-
+                $_SESSION['member'] = $member;
                 $this->_f3->reroute('/profile');
             }
         }
-        /*if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //var_dump($_POST);
-            $first = $_POST['first_name'];
-            $last =  $_POST['last_name'];
-            $age =  trim($_POST['age']);
-            $gender = $_POST['gender'];
-            $phone = $_POST['phone'];
-            $name = $first." ".$last;
-
-            $this->_f3->set('first_name', $first);
-            $this->_f3->set('last_name', $last);
-            $this->_f3->set('gender', $gender);
-            $this->_f3->set('phone', $phone);
-            $this->_f3->set('age', $age);
-
-            if(validForm()){
-                $_SESSION['name'] = $name;
-                $_SESSION['gender'] = $_POST['gender'];
-                $_SESSION['phone'] = $_POST['phone'];
-                $_SESSION['age'] = $_POST['age'];
-                $this->_f3->reroute('/profile');
-            }
-        }*/
         $view = new Template();
         echo $view->render('views/pers.html');
     }
@@ -88,11 +62,9 @@ class MemberController
             $this->_f3->set('seek', $seek);
             $this->_f3->set('bio', $bio);
 
-
+            $member = $_SESSION['member'];
             //If data is valid
             if (validEmail($email)) {
-                $member = $_SESSION['member'];
-                //Write data to Session
                 $member->setEmail($email);
                 $member->setSeeking($_POST['seeking']);
                 $member->setBio($_POST['bio']);

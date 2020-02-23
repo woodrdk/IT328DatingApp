@@ -19,10 +19,6 @@ class Member
      * @param $_age
      * @param $_gender
      * @param $_phone
-     * @param $_email
-     * @param $_state
-     * @param $_seeking
-     * @param $_bio
      */
     public function __construct($_fname, $_lname, $_age, $_gender, $_phone)
     {
