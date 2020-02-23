@@ -41,11 +41,10 @@ $outdoor = array ('collecting', 'climbing', 'swimming',
 $f3->set('outdoor', $outdoor);
 
 // define a default route
-$f3 -> route('GET /', function(){
-    $view = new Template();
-    echo $view->render('views/home.html');
-    //echo'<h1>Hello World!</h1>';
+$f3 -> route('GET /', function($f3){
+    $GLOBALS['controller']->home();
 });
+
 // personal info, profile, interests,  profile summary
 $f3 -> route('GET /home', function($f3){
     $GLOBALS['controller']->home();
@@ -142,13 +141,11 @@ $f3 -> route('GET|POST /interests', function($f3, $indoor, $outdoor){
 });
 
 $f3 -> route('GET|POST /summary', function(){
-    $view = new Template();
-    echo $view->render('views/summ.html');
+    $GLOBALS['controller']->summary();
 });
 
 $f3 -> route('GET /privacy', function(){
-    $view = new Template();
-    echo $view->render('views/privacy.html');
+    $GLOBALS['controller']->privacy();
 });
 // Run Fat Free
 $f3 -> run();
