@@ -6,8 +6,6 @@
 * This file routes the users at the index to the home page using FatFree Framework
 */
 
-// start a session
-session_start();
 // Turn on error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -15,6 +13,8 @@ error_reporting(E_ALL);
 // require the autoload file
 require_once ('vendor/autoload.php');
 require ('model/validation-functions.php');
+// start a session
+session_start();
 // Create an instance of the base class
 $f3 = Base::instance();
 //Turn on Fat-Free error reporting
@@ -36,6 +36,7 @@ $f3->set('states', array('Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California
 
 $indoor = array('tv', 'puzzles', 'movies', 'video games', 'board games', 'playing cards', 'cooking', 'reading');
 $f3->set('indoor', $indoor);
+
 $outdoor = array ('collecting', 'climbing', 'swimming',
     'biking', 'walking', 'hiking');
 $f3->set('outdoor', $outdoor);
@@ -51,93 +52,15 @@ $f3 -> route('GET /home', function($f3){
 });
 
 $f3 -> route('GET|POST /personal', function($f3){
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //var_dump($_POST);
-        $first = $_POST['first_name'];
-        $last =  $_POST['last_name'];
-        $age =  trim($_POST['age']);
-        $gender = $_POST['gender'];
-        $phone = $_POST['phone'];
-        $name = $first." ".$last;
-
-        $f3->set('first_name', $first);
-        $f3->set('last_name', $last);
-        $f3->set('gender', $gender);
-        $f3->set('phone', $phone);
-        $f3->set('age', $age);
-
-        if(validForm()){
-            $_SESSION['name'] = $name;
-            $_SESSION['gender'] = $_POST['gender'];
-            $_SESSION['phone'] = $_POST['phone'];
-            $_SESSION['age'] = $_POST['age'];
-            $f3->reroute('/profile');
-        }
-    }
-    $view = new Template();
-    echo $view->render('views/pers.html');
-
+    $GLOBALS['controller']->personal();
 });
+
 $f3 -> route('GET|POST /profile', function($f3){
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //Get data from form
-        $email = $_POST['email'];
-        $state = $_POST['state'];
-        $seek = $_POST['seeking'];
-        $bio = $_POST['bio'];
-
-        //Add data to hive
-        $f3->set('email', $email);
-        $f3->set('stateOption', $state);
-        $f3->set('seek', $seek);
-        $f3->set('bio', $bio);
-
-        //If data is valid
-        if (validEmail($email)) {
-            //Write data to Session
-            $_SESSION['email'] = $_POST['email'];
-            $_SESSION['seeking'] = $_POST['seeking'];
-            $_SESSION['bio'] = $_POST['bio'];
-            $_SESSION['state'] = $_POST['state'];            //Redirect to Summary
-            $f3->reroute('/interests');
-        }
-    }
-
-    $view = new Template();
-    echo $view->render('views/profile.html');
+    $GLOBALS['controller']->profile();
 });
 
-$f3 -> route('GET|POST /interests', function($f3, $indoor, $outdoor){
-
-    $selectedIndoor = array();
-    $selectedOutdoor = array();
-    //If form has been submitted, validate
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //Get data from form
-
-        if(!empty($_POST['indoorInterests'])){
-            $selectedIndoor = $_POST['indoorInterests'];
-        };
-        if(!empty($_POST['outdoorInterests'])){
-            $selectedOutdoor = $_POST['outdoorInterests'];
-        };
-
-        //Add data to hive
-        $f3->set('selectedIndoor', $selectedIndoor);
-        $f3->set('selectedOutdoor', $selectedOutdoor);
-
-        //If data is valid
-        if (validInterests($selectedIndoor, $selectedOutdoor )) {
-            //Write data to Session
-            $_SESSION['inDoor'] = $selectedIndoor;
-            $_SESSION['outDoor'] = $selectedOutdoor;
-           //Redirect to Summary
-            $f3->reroute('/summary');
-        }
-    }
-    $view = new Template();
-    echo $view->render('views/inter.html');
+$f3 -> route('GET|POST /interests', function($f3){
+    $GLOBALS['controller']->interests();
 });
 
 $f3 -> route('GET|POST /summary', function(){
@@ -147,5 +70,6 @@ $f3 -> route('GET|POST /summary', function(){
 $f3 -> route('GET /privacy', function(){
     $GLOBALS['controller']->privacy();
 });
+
 // Run Fat Free
 $f3 -> run();

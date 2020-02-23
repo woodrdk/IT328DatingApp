@@ -1,6 +1,6 @@
 <?php
 
-class PremiumMember extends member
+class PremiumMember extends Member
 {
     private $inDoorInterests;
     private $outDoorInterests;
@@ -12,11 +12,15 @@ class PremiumMember extends member
      */
     public function __construct($inDoorInterests, $outDoorInterests)
     {
-        parent::__construct();
+        //parent::__construct();
         $this->inDoorInterests = $inDoorInterests;
         $this->outDoorInterests = $outDoorInterests;
     }
 
+    public function memberType()
+    {
+        return "prem";
+    }
     /**
      * @return mixed
      */

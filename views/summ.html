@@ -11,38 +11,43 @@
             <table class="redbSumm">
                 <tr class="redList">
                     <td>Name:</td>
-                    <td>{{ @SESSION.name }}</td>
+                    <td>{{ @SESSION.member->getFname()}} {{ @SESSION.member->getLname()  }}</td>
                 </tr>
                 <tr class="redList">
                     <td>Gender:</td>
-                    <td>{{ @SESSION.gender }}</td>
+                    <td>{{ @SESSION.member->getGender() }}</td>
                 </tr>
                 <tr class="redList">
                     <td>Age:</td>
-                    <td>{{ @SESSION.age }}</td>
+                    <td>{{ @SESSION.member->getAge() }}</td>
                 </tr>
                 <tr class="redList">
                     <td>Phone:</td>
-                    <td>{{ @SESSION.phone }}</td>
+                    <td>{{ @SESSION.member->getPhone() }}</td>
                 </tr>
                 <tr class="redList">
                     <td>Email:</td>
-                    <td>{{ @SESSION.email }}</td>
+                    <td>{{ @SESSION.member->getEmail() }}</td>
                 </tr>
                 <tr class="redList">
                     <td>State:</td>
-                    <td>{{ @SESSION.state }}</td>
+                    <td>{{ @SESSION.member->getState() }}</td>
                 </tr>
                 <tr class="redList">
                     <td>Seeking:</td>
-                    <td>{{ @SESSION.seeking }}</td>
+                    <td>{{ @SESSION.member->getSeeking() }}</td>
                 </tr>
-                <tr class="redList">
-                    <td>Interests:</td>
-                    <td> Indoor: {{ implode(", ", @SESSION.inDoor) }} <br>
 
-                        Outdoor:
-                              {{ implode(", ", @SESSION.outDoor) }}</td>
+                <tr class="redList">
+                    <check if="{{ @SESSION.member->memberType() == 'prem' }}">
+                        <td>Interests:</td>
+                        <td> Indoor:  {{ implode(", ", @SESSION.member->getInDoorInterests()) }} <br>
+
+                            Outdoor:
+                            {{ implode(", ",  @SESSION.member->getOutDoorInterests()) }}
+                        </td>
+                    </check>
+
                 </tr>
             </table>
         </div>
@@ -50,7 +55,7 @@
             <div>
                 <ul class="list-unstyled">
                     <li><img src="images/prof.JPG" alt="profile pic" class="img-thumbnail rounded"></li>
-                    <li><h2>Biography</h2> <br> {{ @SESSION.bio }}</li>
+                    <li><h2>Biography</h2> <br> {{ @SESSION.member->getBio() }}</li>
                 </ul>
             </div>
         </div>
