@@ -1,5 +1,10 @@
 <?php
+
+/*
+ *  this file allows the user to upload a picture to the server for their dating profile.
+ */
 session_start();
+// the following echo is to be replaced with the header include
 echo "<!DOCTYPE html>
 <html lang=\"en\">
 <head>
@@ -29,16 +34,18 @@ echo "<!DOCTYPE html>
     </div>
 </nav>";
 
+// gets the member from session
+$member = $_SESSION['member'];
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
+// sets up area of page to display message from checks of the file
 echo "
     <div class='container redb rounded' id='container'>
         <h1>Upload Picture Status</h1>
         <hr>";
-
+// Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
@@ -72,11 +79,14 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        // puts the file name in a session variable
         $_SESSION['picName'] = basename( $_FILES["fileToUpload"]["name"]);
+        // gives them a button to continue
         echo " <button type=\"button\" class=\"btn text-center button\" onclick=\"window.location.href='summary'\">Continue</button>";
     }
     else {
         echo "Sorry, there was an error uploading your file.";
+        $_SESSION['picName'] = "";
     }
 }
 echo "</div>";
