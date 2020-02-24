@@ -114,11 +114,17 @@ class MemberController
                 // $_SESSION['inDoor'] = $selectedIndoor;
                 // $_SESSION['outDoor'] = $selectedOutdoor;
                 //Redirect to Summary
-                $this->_f3->reroute('/summary');
+                $this->_f3->reroute('/pic');
             }
         }
         $view = new Template();
         echo $view->render('views/inter.html');
+    }
+
+    public function pic()
+    {
+        $view = new Template();
+        echo $view->render('views/pic.html');
     }
 
     public function summary()

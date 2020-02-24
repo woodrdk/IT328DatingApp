@@ -66,6 +66,9 @@ $f3 -> route('GET|POST /interests', function($f3){
 $f3 -> route('GET|POST /summary', function(){
     $GLOBALS['controller']->summary();
 });
+$f3 -> route('GET|POST /pic', function(){
+    $GLOBALS['controller']->pic();
+});
 
 $f3 -> route('GET /privacy', function(){
     $GLOBALS['controller']->privacy();

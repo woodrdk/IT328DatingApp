@@ -54,7 +54,11 @@
         <div class="col-md-6 float-right d-flex flex-wrap align-items-center">
             <div>
                 <ul class="list-unstyled">
-                    <li><img src="images/prof.JPG" alt="profile pic" class="img-thumbnail rounded"></li>
+                    <check if="{{ @SESSION.member->memberType() == 'prem' }}">
+                        <true><li><img src="uploads/{{@SESSION['picName']}}" alt="profile pic" class="img-thumbnail rounded"></li></true>
+                        <false><li><img src="images/prof.JPG" alt="profile pic" class="img-thumbnail rounded"></li></false>
+                    </check>
+
                     <li><h2>Biography</h2> <br> {{ @SESSION.member->getBio() }}</li>
                 </ul>
             </div>
