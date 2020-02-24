@@ -1,12 +1,12 @@
+
+
+<?php
 /*
 * Rob Wood
 * 2/22/2020
 * This is a dating app website for class IT328
 * This handles the routes for the index.php.
 */
-
-<?php
-
 /**
  * Class MemberController takes care of routes
  * @attribute $_f3 object
