@@ -20,7 +20,59 @@ class Database
         }
     }
 
+    function insertMember()
+    {
+        // 1. Define query
+        $sql = "";
+
+        // 2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        // 3. Bind the parameter
+
+        // 4. Execute the statement
+        $statement->execute();
+
+        // 5. Get the result
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    function getMembers()
+    {
+        // 1. Define query
+        $sql = "";
+
+        // 2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        // 3. Bind the parameter
+
+        // 4. Execute the statement
+        $statement->execute();
+
+        // 5. Get the result
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
     function getMember()
+    {
+        // 1. Define query
+        $sql = "";
+
+        // 2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        // 3. Bind the parameter
+
+        // 4. Execute the statement
+        $statement->execute();
+
+        // 5. Get the result
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    function getInterest()
     {
         // 1. Define query
         $sql = "";
