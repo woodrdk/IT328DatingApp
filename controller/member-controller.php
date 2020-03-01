@@ -177,4 +177,13 @@ class MemberController
         $view = new Template();
         echo $view->render('views/privacy.html');
     }
+
+    /**
+     * This function takes the user to the admin page.
+     */
+    public function admin()
+    {
+        $view = new Template();
+        echo $view->render('views/admin.html');
+    }
 }

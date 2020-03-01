@@ -74,5 +74,9 @@ $f3 -> route('GET /privacy', function(){
     $GLOBALS['controller']->privacy();
 });
 
+$f3 -> route('GET /admin', function(){
+    $GLOBALS['controller']->admin();
+});
+
 // Run Fat Free
 $f3 -> run();
