@@ -79,7 +79,7 @@ $f3 -> route('GET /admin', function(){
 });
 
 
-
+// started to work on clicking the line nad getting results
 $f3->route("GET|POST /@item",function(){
     $GLOBALS['controller']->showMember(["item"]);
 

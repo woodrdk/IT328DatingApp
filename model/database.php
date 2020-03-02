@@ -31,6 +31,11 @@ class Database
         }
     }
 
+    /**
+     * inserts the members to the database
+     * @param $member the member object
+     * @param $namePic the pic addy
+     */
     function insertMember($member, $namePic)
     {
         $premium= -1;
@@ -43,6 +48,7 @@ class Database
             $premium = 1;
             $interests = $member->getOutdoorInterests() + $member->getIndoorInterests();
         }
+
 
         $sql = "INSERT INTO member VALUES(default, 
             :fname, :lname, :age, :gender, :phone, :email,:state, :seeking, :bio, $premium, :interests, :image)";
@@ -64,11 +70,49 @@ class Database
         $statement->bindParam(':image', $namePic);
         // execute statement
         $statement->execute();
+        $memID = $this->_dbh->lastInsertId();
 
-        return $this->_dbh->lastInsertId();
+        $interestOption = array(
+            "tv" => "1",
+            "puzzles" => "2",
+            "movies" => "3",
+            "video games" => "4",
+            "board games" => "5",
+            "playing cards" => "6",
+            "cooking" => "7",
+            "reading" => "8",
+            "collecting" => "9",
+            "climbing" => "10",
+            "swimming" => "11",
+            "biking" => "12",
+            "walking" => "13",
+            "hiking" => "14",
+
+        );
+
+        for($i = 0; $i<sizeof($interests);$i++ ){
+            $sql2 = "INSERT INTO member_interest VALUES(default, 
+            :member_id, :interest_id, )";
+            $val = $interests[$i];
+            if (array_key_exists($val, $interestOption)) {
+                $intVal = $interestOption[$val];
+            }
+
+            // prepare the statement
+            $statement = $this->_dbh->prepare($sql2);
+
+            $statement->bindParam(':member_id', $memID);
+            $statement->bindParam(':interest_id', $intVal);
+            $statement->execute();
+        }
+
     }
 
 
+    /**
+     * get the members for the admin page
+     * @return array of members signed up
+     */
     function getMembers()
     {
         // define the query
@@ -132,13 +176,12 @@ class Database
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         $interestID = $result['interestID'];
 
-        $sql2 = "INSERT INTO memberInterest (memberID, interestID) VALUES (:id, :interestID)";
+        $sql = "INSERT INTO memberInterest (memberID, interestID) VALUES (:id, :interestID)";
 
-        $statement = $this->_dbh->prepare($sql2);
+        $statement = $this->_dbh->prepare($sql);
         $statement->bindParam(":id", $id,PDO::PARAM_INT);
         $statement->bindParam(":interestID", $interestID,PDO::PARAM_INT);
         $statement->execute();
-
     }
 
 }

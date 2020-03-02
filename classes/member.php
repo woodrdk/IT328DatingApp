@@ -32,10 +32,6 @@ class Member
         $this->_age = $_age;
         $this->_gender = $_gender;
         $this->_phone = $_phone;
-        // $this->_email = $_email;
-        // $this->_state = $_state;
-        // $this->_seeking = $_seeking;
-        // $this->_bio = $_bio;
     }
     /*
      * Returns what type of membership user has
@@ -63,7 +59,7 @@ class Member
     }
 
     /**
-     * @return the user's first name
+     * @return String the user's first name
      */
     public function getFname()
     {
