@@ -5,6 +5,7 @@
  */
 class Member
 {
+    private $_ID;
     private $_fname;
     private $_lname;
     private $_age;
@@ -14,6 +15,7 @@ class Member
     private $_state;
     private $_seeking;
     private $_bio;
+
 
     /**
      * Member constructor.
@@ -44,6 +46,21 @@ class Member
         return "member";
     }
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->_ID;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->_ID = $id;
+    }
 
     /**
      * @return the user's first name
@@ -197,4 +214,6 @@ class Member
     {
         $this->_bio = $bio;
     }
+
+
 }

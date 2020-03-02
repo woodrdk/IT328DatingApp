@@ -8,7 +8,9 @@ class PremiumMember extends Member
 {
     private $_inDoorInterests;
     private $_outDoorInterests;
-
+    private $interests;
+    private $_image;
+    private $_picAddy;
 
     /*
     * Overrides parent's membership type.
@@ -53,4 +55,21 @@ class PremiumMember extends Member
         $this->_outDoorInterests = $_outDoorInterests;
     }
 
+    /**
+     * Gets location of member's pic
+     * @return string of member's photo location
+     */
+    public function getPicAddy()
+    {
+        return $this->_picAddy;
+    }
+
+    /**
+     * Sets location of member's pic
+     * @param string $picAddy location of member's photo
+     */
+    public function setPicAddy($picAddy)
+    {
+        $this->_picAddy = $picAddy;
+    }
 }

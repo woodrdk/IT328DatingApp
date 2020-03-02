@@ -1,6 +1,6 @@
 <?php
 
-//config-pet.php
+//config-member.php
 
 define("DB_DSN", "mysql:dbname=rwoodgre_grc");
 define("DB_USERNAME", "rwoodgre_grcuser");

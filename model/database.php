@@ -2,91 +2,143 @@
 
 require_once ("config-member.php");
 
+/**
+ * Class Database
+ */
 class Database
 {
     // PDO object
     private $_dbh;
 
+    /*
+     * Constructs a new Database PDO object
+     */
     function __construct()
     {
-        try{
-            // create new pdo connection
-            $this->_dbh = new PDO(DB_DSN, DB_USERNAME,DB_PASSWORD);
-       //     echo "Connected";
-        }
+        $this->_dbh = $this->connect();
+    }
 
-        catch(PDOException $e){
+    /**
+     * @return PDO|null the connection
+     */
+    function connect()
+    {
+        try {
+            return new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+        } catch(PDOException $e) {
             echo $e->getMessage();
+            return null;
         }
     }
 
-    function insertMember()
+    function insertMember($member, $namePic)
     {
-        // 1. Define query
-        $sql = "";
+        $premium= -1;
+        // define the query
+        if($member->memberType() == 'member') {
+            $premium = 0;
+            $interests = null;
+        }
+        else {
+            $premium = 1;
+            $interests = $member->getOutdoorInterests() + $member->getIndoorInterests();
+        }
 
-        // 2. Prepare the statement
+        $sql = "INSERT INTO member VALUES(default, 
+            :fname, :lname, :age, :gender, :phone, :email,:state, :seeking, :bio, $premium, :interests, :image)";
+
+        // prepare the statement
         $statement = $this->_dbh->prepare($sql);
 
-        // 3. Bind the parameter
-
-        // 4. Execute the statement
+        // bind the parameters
+        $statement->bindParam(':fname', $member->getFName());
+        $statement->bindParam(':lname', $member->getLName());
+        $statement->bindParam(':age', $member->getAge());
+        $statement->bindParam(':gender', $member->getGender());
+        $statement->bindParam(':phone', $member->getPhone());
+        $statement->bindParam(':email', $member->getEmail());
+        $statement->bindParam(':state', $member->getState());
+        $statement->bindParam(':seeking', $member->getSeeking());
+        $statement->bindParam(':bio', $member->getBio());
+        $statement->bindParam(':interests', $interests);
+        $statement->bindParam(':image', $namePic);
+        // execute statement
         $statement->execute();
 
-        // 5. Get the result
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+        return $this->_dbh->lastInsertId();
     }
+
 
     function getMembers()
     {
-        // 1. Define query
-        $sql = "";
-
-        // 2. Prepare the statement
+        // define the query
+        $sql = "SELECT * FROM member ORDER BY lname";
+        // prepare statement
         $statement = $this->_dbh->prepare($sql);
-
-        // 3. Bind the parameter
-
-        // 4. Execute the statement
+        // execute statement
         $statement->execute();
-
-        // 5. Get the result
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+        // get result
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-    function getMember()
+
+    function getMember($member_id)
     {
-        // 1. Define query
-        $sql = "";
-
-        // 2. Prepare the statement
+        $sql = "SELECT * FROM member WHERE member_id = $member_id";
+        // prepare statement
         $statement = $this->_dbh->prepare($sql);
-
-        // 3. Bind the parameter
-
-        // 4. Execute the statement
+        // bind parameters
+        $statement->bindParam(':member_id', $member_id);
+        // execute statement
         $statement->execute();
-
-        // 5. Get the result
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+        return $statement->fetch();
     }
-    function getInterest()
+
+    function getInterests($member_id)
     {
-        // 1. Define query
-        $sql = "";
-
-        // 2. Prepare the statement
+        $sql = "SELECT interests FROM member WHERE member_id = $member_id";
+        // prepare  statement
         $statement = $this->_dbh->prepare($sql);
+        // bind  parameters
+        $statement->bindParam(':member_id', $member_id);
+        // execute statement
+        $statement->execute();
+        return $statement->fetch();
+    }
 
-        // 3. Bind the parameter
+    public function insertMemberInterests($member) {
+        $id = $member->getID();
+        $indoorInterests = $member->getIndoorInterests();
+        $outdoorInterests = $member->getOutdoorInterests();
+        if (!empty($indoorInterests)) {
+            foreach ($indoorInterests AS $interest ) {
+                $this->insertInterest($interest, $id);
+            }
+        }
 
-        // 4. Execute the statement
+        if (!empty($outdoorInterests)) {
+            foreach ($outdoorInterests AS $interest ) {
+                $this->insertInterest($interest, $id);
+            }
+        }
+    }
+
+    public function insertInterest($interest, $id) {
+
+        $sql = "SELECT interestID FROM interest WHERE interest = :interest";
+
+        $statement = $this->_dbh->prepare($sql);
+        $statement->bindParam(":interest", $interest);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        $interestID = $result['interestID'];
+
+        $sql2 = "INSERT INTO memberInterest (memberID, interestID) VALUES (:id, :interestID)";
+
+        $statement = $this->_dbh->prepare($sql2);
+        $statement->bindParam(":id", $id,PDO::PARAM_INT);
+        $statement->bindParam(":interestID", $interestID,PDO::PARAM_INT);
         $statement->execute();
 
-        // 5. Get the result
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
     }
+
 }

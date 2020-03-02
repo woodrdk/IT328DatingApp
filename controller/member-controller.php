@@ -1,5 +1,3 @@
-
-
 <?php
 /*
 * Rob Wood
@@ -30,7 +28,6 @@ class MemberController
      */
     public function home()
     {
-
         $template = new Template();
         echo $template->render('views/home.html');
     }
@@ -103,8 +100,10 @@ class MemberController
                 $_SESSION['state'] = $_POST['state'];
                            //Redirect to Summary*/
                 if($member->memberType() == "member") {
+                    $GLOBALS['db']->insertMember($_SESSION['member'], '');
                     $this->_f3->reroute('/summary');
-                } else {
+                }
+                else {
                     $this->_f3->reroute('/interests');
                 }
             }
@@ -120,6 +119,7 @@ class MemberController
      */
     public function interests()
     {
+
         $selectedIndoor = array();
         $selectedOutdoor = array();
         //If form has been submitted, validate
@@ -144,6 +144,8 @@ class MemberController
                 // $_SESSION['inDoor'] = $selectedIndoor;
                 // $_SESSION['outDoor'] = $selectedOutdoor;
                 //Redirect to Summary
+                $_SESSION['member'] = $member;
+                $GLOBALS['db']->insertMember($_SESSION['member'], $_SESSION['picName']);
                 $this->_f3->reroute('/pic');
             }
         }
@@ -156,6 +158,7 @@ class MemberController
      */
     public function pic()
     {
+
         $view = new Template();
         echo $view->render('views/pic.html');
     }
@@ -167,6 +170,9 @@ class MemberController
     {
         $view = new Template();
         echo $view->render('views/summ.html');
+
+        session_destroy();
+        $_SESSION = array();
     }
 
     /**
@@ -183,7 +189,35 @@ class MemberController
      */
     public function admin()
     {
+        // query the database for all members
+        $allMembers = $GLOBALS['db']->getMembers();
+        $this->_f3->set('members', $allMembers);
         $view = new Template();
         echo $view->render('views/admin.html');
+    }
+
+    public function showMember($id){
+
+        $member = $this->_db->getMember($id);
+        if ($member[0]["premium"] == "0") {
+            $_SESSION["user"] = new Member();
+        } else {
+            $_SESSION["user"] = new PremiumMember();
+            $_SESSION["user"]->setInterests($this->_db->getInterests($id));
+            $_SESSION["user"]->setImage($member[0]["image"]);
+        }
+
+        $_SESSION["user"]->setFname($member[0]["fname"]);
+        $_SESSION["user"]->setLname($member[0]["lname"]);
+        $_SESSION["user"]->setAge($member[0]["age"]);
+        $_SESSION["user"]->setGender($member[0]['gender']);
+        $_SESSION["user"]->setPhone($member[0]["phone"]);
+        $_SESSION["user"]->setEmail($member[0]["email"]);
+        $_SESSION["user"]->setState($member[0]["state"]);
+        $_SESSION["user"]->setSeeking($member[0]["seeking"]);
+        $_SESSION["user"]->setBio($member[0]['bio']);
+
+        $view = new Template();
+        echo $view->render("views/summ.html");
     }
 }
