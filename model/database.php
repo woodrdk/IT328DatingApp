@@ -161,7 +161,10 @@ class Database
         // get result
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    /**
+     * get the member for a profile page
+     * @return member information
+     */
     function getMember($member_id)
     {
         $sql = "SELECT * FROM member WHERE member_id = $member_id";
@@ -173,7 +176,10 @@ class Database
         $statement->execute();
         return $statement->fetch();
     }
-
+    /**
+     * get the interests of a member
+     * @return interest information
+     */
     function getInterests($member_id)
     {
         $sql = "SELECT interests FROM member WHERE member_id = $member_id";
@@ -185,7 +191,9 @@ class Database
         $statement->execute();
         return $statement->fetch();
     }
-
+    /**
+     * inserts the interests of a member into db
+     */
     public function insertMemberInterests($member) {
         $id = $member->getID();
         $indoorInterests = $member->getIndoorInterests();
