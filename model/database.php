@@ -2,6 +2,43 @@
 
 require_once ("config-member.php");
 
+/*
+ * Ran out of time to correct my database but this is one that i used last.. redid this several times then realized
+ * was still wrong
+CREATE TABLE member(
+    member_id INT AUTO_INCREMENT,
+    fname VARCHAR(255) NULL,
+    lname VARCHAR(255) NULL,
+    age INT NULL,
+    gender VARCHAR(255) NULL,
+    phone VARCHAR(255) NULL,
+    email VARCHAR(255) NULL,
+    state VARCHAR(255) NULL,
+    seeking VARCHAR(255) NULL,
+    bio VARCHAR(255) NULL,
+    premium tinyint NULL,
+    interests VARCHAR(255) NULL,
+    image VARCHAR(255) NULL,
+    PRIMARY KEY (member_id)
+    );
+
+ CREATE TABLE member(
+    interest_id INT NOT NULL AUTO_INCREMENT,
+    interest VARCHAR(255) NULL,
+    type VARCHAR(255) NULL,
+    PRIMARY KEY (interest_id)
+    );
+
+CREATE TABLE member_interest(
+    member_interest_id INT NOT NULL AUTO_INCREMENT,
+    member_id INT NOT NULL,
+    interest_id INT NOT NULL,
+    PRIMARY KEY (member_interest_id),
+    FOREIGN KEY (member_id) REFERENCES member (member_id),
+    FOREIGN KEY (interest_id) REFERENCES interest (interest_id)
+    );
+ */
+
 /**
  * Class Database
  */
